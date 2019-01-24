@@ -38,7 +38,7 @@ class User(db.Model):
 # db.session.add(user)
 # db.session.commit()
 
-#[Read]
+#[Read]m
 # SELECT * FROM users;
 # users = User.query.all() # 복수
 
