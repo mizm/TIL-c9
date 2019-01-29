@@ -9,3 +9,7 @@ class Student(models.Model) :
 
     def __str__(self) :
         return self.name
+    
+class Post(models.Model) :
+    RK = models.IntegerField()
+    message = models.TextField()
