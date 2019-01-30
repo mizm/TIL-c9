@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>{{questions.title}}</h1>
+    <form action = '{% url 'menu:select' %}' mehtod = 'get'>
+        {% for menu in questions.choice_set.all %}
+        <input type="radio" name="menu_list" value="{{menu.pk}}"> {{menu.content}} 
+        {% endfor %}
+        <input type="submit" value="Submit"/>
+    </form>
+    <hr>
+    {% for menu in questions.choice_set.all %}
+    <h2>{{menu.content}} : {{menu.votes}}표</h2>
+    {% endfor %}
+</body>
+</html>

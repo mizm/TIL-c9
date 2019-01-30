@@ -13,5 +13,18 @@
     <a href="{% url 'posts:list' %}">List</a>
     <a href='{% url 'posts:delete' post.pk %}'>delete</a>
     <a href='{% url 'posts:edit' post.pk %}'>edit</a>
+    
+    <hr>
+    <form action = "{% url 'posts:comments_create' post.pk %}" method ='post'>
+        {% csrf_token %}
+        댓글 : <input type="text" name="content"/>
+        <input type="submit" value="Submit"/>
+    </form>
+    <hr>
+    <ul>
+        {% for c in comments %}
+        <li> {{c.content}} <a href="{% url 'posts:comments_delete' post.pk c.pk %}">delete</a> </li> 
+        {% endfor %}
+    </ul>
 </body>
 </html>

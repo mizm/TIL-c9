@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Post
+from .models import Post, Comment
 # Create your views here.
 
 #def throw
@@ -24,7 +24,8 @@ def index(request):
 
 def detail(request,post_id):
     post = Post.objects.get(pk=post_id)
-    return render(request,'detail.html', {'post' : post})
+    c = post.comment_set.all()
+    return render(request,'detail.html', {'post' : post,'comments':c})
     
 def naver(request,q):
     return redirect(f'https://search.naver.com/search.naver?query={q}')
@@ -46,4 +47,15 @@ def update(request, post_id) :
     post.content = content
     post.save()
     return redirect('posts:detail',post.pk)
-    
+
+def comments_create(request,post_id) :
+    post = Post.objects.get(pk=post_id)
+    content = request.POST.get('content')
+    c = Comment(post=post,content=content)
+    c.save()
+    return redirect('posts:detail',post_id)
+
+def comments_delete(request,post_id,comment_id) :
+    comment = Comment.objects.get(pk=comment_id)
+    comment.delete()
+    return redirect('posts:detail',post_id)
