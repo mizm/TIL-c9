@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action = '{% url 'article:menu' %}' method = 'get'>
+        <select name="kind">
+        <option value="한식">한식</option>
+        <option value="중식">중식</option>
+        <option value="양식" selected="selected">양식</option>
+        </select>
+        <input type="submit" value="Submit"/>
+    </form>
+</body>
+</html>
