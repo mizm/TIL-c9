@@ -1,10 +1,12 @@
 from django.shortcuts import render,redirect
 from .models import Movie
+from django.contrib.auth.forms import AuthenticationForm
 
 # Create your views here.
 def index(request) :
     movies = Movie.objects.all()
-    return render(request,'movie.html',{'movies':movies})
+    form = AuthenticationForm()
+    return render(request,'movie.html',{'movies':movies,'form':form})
     
 def new_movie(request) :
     return render(request,'new_movie.html')

@@ -4,6 +4,7 @@ app_name = 'article'
 
 urlpatterns = [
     path('',views.index, name ='index'),
-    path('new/',views.new, name ='new'),
+    path('menu/new/<str:kind>/',views.new, name ='new'),
     path('menu/',views.menu, name ='menu'),
+    path('menu/<int:food_id>/',views.detail, name ='detail'),
 ]

@@ -7,12 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> {{kind}} </h1>
+    <h1>Index Pages</h1>
+    <h2>{{student.name}} : Students</h2>
     <ul>
-        {% for food in foods %}
-          <a href="{% url 'article:detail' food.pk %}"> <li>{{food.name}}</li> </a>  
+        {% for student in students %}
+            <a href="/posts/{{student.pk}}"><li>{{student.name}}</li></a>
         {% endfor %}
     </ul>
-    <a href="{% url 'article:new' kind %}"> new </a>
+    <a href="/posts/">List</a>
+
 </body>
 </html>

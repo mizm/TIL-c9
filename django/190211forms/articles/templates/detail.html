@@ -7,12 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> {{kind}} </h1>
-    <ul>
-        {% for food in foods %}
-          <a href="{% url 'article:detail' food.pk %}"> <li>{{food.name}}</li> </a>  
-        {% endfor %}
-    </ul>
-    <a href="{% url 'article:new' kind %}"> new </a>
+    <h1>{{food.kind}}</h1>
+    <h2>이름 : {{food.name}}</h2>
+    <h3>칼로리 : {{food.cal}}</h3>
+    <h3>주재료 : {{food.materials}}</h3>
 </body>
 </html>

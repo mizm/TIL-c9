@@ -13,21 +13,27 @@ from .forms import FoodForm
     
 #     return render(request,'form.html',{'form':form})
     
-def new(request) :
+def new(request,kind) :
     if request.method == "POST" :
         form = FoodForm(request.POST)
-        food = form.save()
-        return redirect("article:new")
+        if form.is_valid() :
+            food = form.save(commit=False)
+            food.kind = kind
+            food.save()
+            return redirect("article:index")
     else :
-        kind = request.GET.get('kind')
         form = FoodForm(initial={'kind': kind})
-    return render(request,'form.html',{'form':form, 'kind':kind})
+    return render(request,'form.html',{'form':form})
     
 def index(request) :
     
     return render(request,'index.html')
 
 def menu(request) :
-    kind = request.GET.get('kind')
+    kind = request.POST.get('kind')
     foods = Food.objects.filter(kind=kind)
     return render(request,'menu.html',{'foods':foods, 'kind':kind})
+    
+def detail(request, food_id) :
+    food = Food.objects.get(pk=food_id)
+    return render(request,'detail.html',{'food':food})
