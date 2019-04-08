@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block container %}
+    <h1>index</h1>
+    <ul>
+        {% for post in posts %}
+       <a href="{% url 'posts:detail' post.pk %}"> <li> {{post.title}} : {{post.content}}</li></a>
+        {% endfor %}
+        
+    </ul>
+    <a href="{% url 'posts:new' %}">new</a>
+{% endblock %}
