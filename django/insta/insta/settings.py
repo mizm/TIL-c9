@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # 'posts.app.PostsConfig',
     'bootstrap4',
     'imagekit',
+    'accounts',
     'posts',
 ]
 
