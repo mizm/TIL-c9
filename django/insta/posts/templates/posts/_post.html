@@ -2,9 +2,9 @@
   <div class="card-header">
     <span> @ {{ post.user.username}} </span>
   </div>
-  {% if post.image %}
-    <img src="{{post.image.url}}" class="card-img-top" alt="{{post.image}}">
-  {% endif %}
+  {% for image in post.image_set.all %}
+    <img src="{{image.file.url}}" class="card-img-top" alt="{{image.file}}">
+  {% endfor %}
   <div class="card-body">
     <a href ='{% url 'posts:like' post.id %}'>
       {% if user in post.like_users.all %}
