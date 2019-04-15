@@ -5,7 +5,7 @@ from django.conf import settings
 
 #추가적인 저장위치 만들기
 def post_image_path(instance,filename) :
-    return f'posts/images/{filename}'
+    return f'posts/images/{instance.post.user.username}/{filename}'
 
 # Create your models here.
 class Post(models.Model) :

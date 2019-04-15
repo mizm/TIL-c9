@@ -48,12 +48,15 @@ def update(request, post_id) :
         return redirect('posts:list')
     if request.method == 'POST' :
         post_form = PostForm(request.POST,request.FILES, instance=post)
-        if post_form.is_valid():
+        image_formset = ImageFormSet(request.POST, request.FILES, instance=post)
+        if post_form.is_valid() and image_formset.is_valid():
             post_form.save()
+            image_formset.save()
             return redirect('posts:list')
     else :
         post_form = PostForm(instance=post)
-        return render(request, 'posts/form.html',{'post_form':post_form})
+        image_formset = ImageFormSet(instance=post)
+        return render(request, 'posts/form.html',{'post_form':post_form ,'image_formset':image_formset})
 
 @require_POST
 @login_required
