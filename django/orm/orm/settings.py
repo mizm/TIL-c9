@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crud',
     'onetomany',
+    'manytomany',
     'django_extensions',
 ]
 
