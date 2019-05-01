@@ -25,6 +25,7 @@ class Patient(models.Model):
 # N*Doctor : M*Patient -> M:N = Doctor : Patient 
 # Doctor : Patient = M : N
 # class Reservation(models.Model):
+
 #     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
 #     patient = models.ForeignKey(Patient, on_delete = models.CASCADE)    
 # doctor1 = Doctor.objects.create(name='kim')

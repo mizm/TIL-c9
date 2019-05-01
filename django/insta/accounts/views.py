@@ -30,7 +30,7 @@ def login(request):
     if request.method == 'POST' :
         login_form = AuthenticationForm(request,request.POST)
         if login_form.is_valid() :
-            auth_login(request,login_form.get_user())
+            auth_login(request,login_form.get_user()) 
             return redirect(request.GET.get('next') or 'posts:list')
         else :
             return render(request, 'accounts/login.html',{'login_form' : login_form})
@@ -103,3 +103,5 @@ def follow(request,user_id):
         people.followers.add(request.user)
         
     return redirect('people',people.username)
+    
+    

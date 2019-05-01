@@ -8,4 +8,29 @@
 
 {% endfor %}
 
+<script>
+    const likeButtons = document.querySelectorAll('.like-button')
+    likeButtons.forEach(function(button){
+        button.addEventListener('click',function(e){
+            const postId = e.target.dataset.id;
+            console.log(e);   
+            axios.get(`/posts/${postId}/like/`)
+                    .then(function(response){
+                        document.querySelector(`#like-count-${postId}`).innerText = `${response.data.count}`;
+                        if(response.data.liked) //response.data = {liked: true}
+                        {
+                            e.target.classList.remove('far'); 
+                            e.target.classList.add('fas');
+                        }
+                        else
+                        {
+                            e.target.classList.remove('fas'); 
+                            e.target.classList.add('far');
+                        }
+                        
+                    })
+        });
+    });
+</script>
+
 {% endblock %}
